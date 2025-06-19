@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/models/Product_model.dart';
+import 'package:flutter_application_1/pages/models/global_list.dart';
 
 class DescribsionPage extends StatefulWidget {
   final ProductModel product;
@@ -13,6 +14,7 @@ class DescribsionPage extends StatefulWidget {
 
 class _DescribsionPageState extends State<DescribsionPage> {
   bool isLiked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -177,20 +179,23 @@ class _DescribsionPageState extends State<DescribsionPage> {
                   borderRadius: BorderRadius.circular(50),
                 ),
                 height: 60,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(50),
-                  onTap: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text(
-                      "ADD TO BAG",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      bag.add(widget.product);
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                    foregroundColor: Colors.white,
+                    minimumSize: Size(double.infinity, 60),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
                     ),
+                  ),
+                  child: Text(
+                    "ADD TO BAG",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
