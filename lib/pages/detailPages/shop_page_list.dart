@@ -99,30 +99,25 @@ class _ShopPageListState extends State<ShopPageList> {
                     Positioned(
                       right: 0,
                       bottom: 0,
-                      child:isLiked
-                              ? IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isLiked = false;
-                                    });
-                                  },
-                                  icon: Icon(Icons.favorite, color: Colors.red),
-                                )
-                              : IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isLiked = true;
-                                    });
-                                  },
-                                  icon: Icon(Icons.favorite_border),
-                                  color: Colors.red,
-                                  iconSize: 24,
-                                ), 
-                      
-                      
-                      
-                      
-                     
+                      child: isLiked
+                          ? IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  isLiked = false;
+                                });
+                              },
+                              icon: Icon(Icons.favorite, color: Colors.red),
+                            )
+                          : IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  isLiked = true;
+                                });
+                              },
+                              icon: Icon(Icons.favorite_border),
+                              color: Colors.red,
+                              iconSize: 24,
+                            ),
                     ),
                   ],
                 ),

@@ -5,6 +5,7 @@ import 'package:flutter_application_1/pages/detailPages/shop_page_list.dart';
 import 'package:flutter_application_1/pages/fakestoreapi/product.dart';
 import 'package:flutter_application_1/pages/models/Product_model.dart';
 import 'package:flutter_application_1/pages/search_page.dart';
+import 'package:flutter_application_1/pages/shared/shared_pref.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -14,6 +15,7 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+  bool isLiked = false;
   bool isOrder = false;
   bool isLoading = true;
   List<ProductModel> productmodel = [];
@@ -22,6 +24,7 @@ class _ShopPageState extends State<ShopPage> {
   void initState() {
     super.initState();
     getLoadList();
+    toggleLike();
   }
 
   @override
@@ -133,5 +136,16 @@ class _ShopPageState extends State<ShopPage> {
         isLoading = false;
       });
     }
+  }
+
+  void loadIsLiked() async {
+    isLiked = await SharedPrefService.getBool('isLiked');
+    setState(() {});
+  }
+
+  void toggleLike() async {
+    isLiked = !isLiked;
+    await SharedPrefService.saveBool('isLiked', isLiked);
+    setState(() {});
   }
 }
